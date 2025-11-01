@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<!--
+  Página de vendas para a linha de produtos AlfaSharks.
+  Versão Dark Neon com design futurista e interativo.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlfaSharks – Estratégias de Trading e Robôs Validados</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+      --bg-dark: #0a0e27;
+      --bg-darker: #050816;
+      --bg-card: #0f1629;
+      --neon-cyan: #00f0ff;
+      --neon-blue: #0066ff;
+      --neon-purple: #9d00ff;
+      --neon-green: #00ff88;
+      --neon-pink: #ff0080;
+      --text-primary: #e0e6ff;
+      --text-secondary: #8b93b8;
+      --text-muted: #5a6280;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-darker);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background animado com partículas */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(157, 0, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.03) 0%, transparent 50%);
+      z-index: 0;
+      animation: backgroundPulse 10s ease-in-out infinite;
+    }
+
+    @keyframes backgroundPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Grid de fundo */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header futurista */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+      animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-img {
+      height: 50px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+      animation: logoGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes logoGlow {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5)); }
+      50% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.8)); }
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav li a {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    nav li a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+      box-shadow: 0 0 10px var(--neon-cyan);
+      transition: width 0.3s ease;
+    }
+
+    nav li a:hover::before {
+      width: 100%;
+    }
+
+    nav li a:hover {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    /* Hero section neon */
+    .hero {
+      background: 
+        linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(5, 8, 22, 0.9) 100%),
+        url('hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text-primary);
+      padding: 10rem 2rem 8rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 40%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(157, 0, 255, 0.15) 0%, transparent 50%);
+      animation: heroPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes heroPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Linhas animadas no hero */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+      animation: scanLine 4s linear infinite;
+    }
+
+    @keyframes scanLine {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+      animation: titleGlow 3s ease-in-out infinite, fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.3); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 3rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      line-height: 1.8;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    /* Botões neon */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      background: transparent;
+      color: var(--neon-cyan);
+      font-weight: 700;
+      font-size: 1.1rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 
+        0 0 20px rgba(0, 240, 255, 0.3),
+        inset 0 0 20px rgba(0, 240, 255, 0.1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: var(--neon-cyan);
+      color: var(--bg-darker);
+      transform: translateY(-3px);
+      box-shadow: 
+        0 0 40px rgba(0, 240, 255, 0.6),
+        0 10px 30px rgba(0, 240, 255, 0.3);
+    }
+
+    .btn svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+      font-size: 3rem;
+      font-weight: 900;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--text-primary);
+      position: relative;
+      padding-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-title::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
+      box-shadow: 0 0 20px var(--neon-cyan);
+      border-radius: 2px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+      box-shadow: 0 0 20px var(--neon-purple);
+      border-radius: 2px;
+    }
+
+    /* Cards neon futuristas */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .plan-card {
+      background: rgba(15, 22, 41, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 2px solid rgba(0, 240, 255, 0.2);
+      box-shadow: 
+        0 0 30px rgba(0, 240, 255, 0.1),
+        inset 0 0 30px rgba(0, 240, 255, 0.05);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease-out both;
+    }
+
+    .plan-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .plan-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-card);
+      border-radius: 18px;
+      z-index: -1;
+    }
+
+    .plan-card:nth-child(1) { animation-delay: 0.1s; }
+    .plan-card:nth-child(2) { animation-delay: 0.2s; }
+    .plan-card:nth-child(3) { animation-delay: 0.3s; }
+    .plan-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .plan-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      border-color: var(--neon-cyan);
+      box-shadow: 
+        0 0 50px rgba(0, 240, 255, 0.4),
+        0 20px 60px rgba(0, 240, 255, 0.2);
+    }
+
+    .plan-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Ícone animado do card */
+    .plan-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.1);
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 
+        0 0 30px rgba(0, 240, 255, 0.3),
+        inset 0 0 20px rgba(0, 240, 255, 0.1);
+      animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .plan-icon svg {
+      width: 45px;
+      height: 45px;
+      fill: var(--neon-cyan);
+      filter: drop-shadow(0 0 10px var(--neon-cyan));
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .plan-card:hover .plan-icon {
+      border-color: var(--neon-blue);
+      box-shadow: 
+        0 0 50px rgba(0, 240, 255, 0.6),
+        inset 0 0 30px rgba(0, 240, 255, 0.2);
+      animation: iconSpin 1s ease-in-out;
+    }
+
+    @keyframes iconSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .plan-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--neon-cyan);
+      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    }
+
+    .plan-card p.tagline {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .plan-card ul li {
+      margin-bottom: 1rem;
+      padding-left: 2.5rem;
+      position: relative;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .plan-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: transparent;
+      border: 2px solid var(--neon-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+
+    .plan-card ul li::after {
+      content: '✓';
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--neon-cyan);
+      font-weight: bold;
+      font-size: 14px;
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .plan-card:hover ul li {
+      transform: translateX(8px);
+      color: var(--neon-cyan);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--neon-blue);
+      border-color: var(--neon-blue);
+      box-shadow: 
+        0 0 20px rgba(0, 102, 255, 0.3),
+        inset 0 0 20px rgba(0, 102, 255, 0.1);
+    }
+
+    .btn-secondary:hover {
+      background: var(--neon-blue);
+      color: var(--bg-darker);
+      box-shadow: 
+        0 0 40px rgba(0, 102, 255, 0.6),
+        0 10px 30px rgba(0, 102, 255, 0.3);
+    }
+
+    /* FAQ neon */
+    .faq {
+      margin-bottom: 3rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+      background: rgba(15, 22, 41, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.6s ease-out both;
+    }
+
+    .faq-item:nth-child(1) { animation-delay: 0.1s; }
+    .faq-item:nth-child(2) { animation-delay: 0.2s; }
+    .faq-item:nth-child(3) { animation-delay: 0.3s; }
+    .faq-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .faq-item:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    }
+
+    .faq-question {
+      font-weight: 700;
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+      position: relative;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .faq-question::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--neon-cyan);
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px var(--neon-cyan);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: var(--neon-cyan);
+      transition: transform 0.3s ease;
+      font-weight: 300;
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .faq-item.open .faq-question {
+      color: var(--neon-cyan);
+      background: rgba(0, 240, 255, 0.05);
+    }
+
+    .faq-item.open .faq-question::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 2rem 1.5rem 3rem;
+    }
+
+    /* Footer neon */
+    footer {
+      background: rgba(5, 8, 22, 0.95);
+      backdrop-filter: blur(20px);
+      color: var(--text-primary);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      border-top: 1px solid rgba(0, 240, 255, 0.2);
+      box-shadow: 0 -10px 50px rgba(0, 240, 255, 0.1);
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(157, 0, 255, 0.05) 0%, transparent 50%);
+    }
+
+    footer p {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+
+    footer a {
+      color: var(--neon-cyan);
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+
+    footer a:hover {
+      color: var(--neon-blue);
+      text-shadow: 0 0 20px var(--neon-cyan);
+    }
+
+    /* Botão flutuante WhatsApp neon */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      animation: floatBounce 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .whatsapp-float .btn {
+      padding: 1.3rem 2rem;
+      border-radius: 50px;
+      background: transparent;
+      color: var(--neon-green);
+      border-color: var(--neon-green);
+      box-shadow: 
+        0 0 30px rgba(0, 255, 136, 0.4),
+        inset 0 0 20px rgba(0, 255, 136, 0.1);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .whatsapp-float .btn:hover {
+      background: var(--neon-green);
+      color: var(--bg-darker);
+      box-shadow: 
+        0 0 50px rgba(0, 255, 136, 0.7),
+        0 15px 40px rgba(0, 255, 136, 0.4);
+      animation: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      nav ul {
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .plans {
+        grid-template-columns: 1fr;
+      }
+      .nav-container {
+        padding: 1rem;
+      }
+      .logo-img {
+        height: 40px;
+      }
+      .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+      }
+      .whatsapp-float .btn {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Efeito de brilho nos cards ao scroll */
+    @keyframes cardGlow {
+      0% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.1); }
+      50% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.3); }
+      100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.1); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="alfasharks_logo.png" alt="AlfaSharks Bots" class="logo-img">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Automatize e aprimore seu trading</h1>
+      <p>Descubra estratégias validadas no mercado, robôs exclusivos e planos flexíveis que se adaptam ao seu perfil de investidor. Torne‑se parte da comunidade AlfaSharks e evolua com suporte dedicado e tecnologia de ponta.</p>
+      <div class="hero-buttons">
+        <a class="btn" href="#planos">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Ver Planos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="planos">
+      <h2 class="section-title">Escolha o plano ideal</h2>
+      <div class="plans">
+        <!-- Starter Plan -->
+        <div class="plan-card">
+          <div class="plan-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+              <path d="M2 17L12 22L22 17V12L12 17L2 12V17Z"/>
+            </svg>
+          </div>
+          <h3>Flow Starter</h3>
+          <p class="tagline">Estratégia conservadora, ideal para começar</p>
+          <ul>
+            <li>Limite de 1 mini contrato</li>
+            <li>Estratégia de fluxo conservadora</li>
+            <li>Suporte básico em horário comercial</li>
+            <li>Bônus: robôs padrão validados</li>
+          </ul>
+          <div class="btn-group">
+            <a class="btn" href="https://chk.eduzz.com/KW8KNZ7201" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+              </svg>
+              Contratar
+            </a>
+            <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/6b6c993cefd04d3911f8bba25430d43ef803aaa3" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Área de Membros
+            </a>
+          </div>
+        </div>
+
+        <!-- Flow Unlimited Plan -->
+        <div class="plan-card">
+          <div class="plan-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <h3>Flow Ilimitado</h3>
+          <p class="tagline">Fluxo sem limites para quem quer escalar</p>
+          <ul>
+            <li>Sem limite de mini contratos</li>
+            <li>Estratégia de fluxo conservadora</li>
+            <li>Suporte prioritário 24/7</li>
+            <li>Bônus: robôs padrão validados</li>
+          </ul>
+          <div class="btn-group">
+            <a class="btn" href="https://chk.eduzz.com/69KAP1K80O" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+              </svg>
+              Contratar
+            </a>
+            <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/6b6c993cefd04d3911f8bba25430d43ef803aaa3" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Área de Membros
+            </a>
+          </div>
+        </div>
+
+        <!-- Scalping Plan -->
+        <div class="plan-card">
+          <div class="plan-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13,2.05V5.08C16.39,5.57 19,8.47 19,12C19,12.9 18.82,13.75 18.5,14.54L21.12,16.07C21.68,14.83 22,13.45 22,12C22,6.82 18.05,2.55 13,2.05M12,19C8.13,19 5,15.87 5,12C5,8.47 7.61,5.57 11,5.08V2.05C5.94,2.55 2,6.81 2,12A10,10 0 0,0 12,22C15.3,22 18.23,20.39 20.05,17.91L17.45,16.38C16.17,18 14.21,19 12,19Z"/>
+            </svg>
+          </div>
+          <h3>Scalping</h3>
+          <p class="tagline">Alta velocidade para traders agressivos</p>
+          <ul>
+            <li>Sem limite de mini contratos</li>
+            <li>Estratégia de scalping agressiva</li>
+            <li>Suporte prioritário 24/7</li>
+            <li>Bônus: robôs padrão validados</li>
+          </ul>
+          <div class="btn-group">
+            <a class="btn" href="https://chk.eduzz.com/G9612ROYW1" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+              </svg>
+              Contratar
+            </a>
+            <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/9d6c9c644b0bbd12dbf9cebb067be9ea5bf81abe" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Área de Membros
+            </a>
+          </div>
+        </div>
+
+        <!-- Combo Plan -->
+        <div class="plan-card">
+          <div class="plan-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
+            </svg>
+          </div>
+          <h3>Combo Flow + Scalping</h3>
+          <p class="tagline">Duas estratégias em um pacote econômico</p>
+          <ul>
+            <li>Inclui Flow Ilimitado e Scalping</li>
+            <li>Economia na contratação</li>
+            <li>Suporte prioritário 24/7</li>
+            <li>Bônus: robôs padrão validados</li>
+          </ul>
+          <div class="btn-group">
+            <a class="btn" href="https://chk.eduzz.com/69KAP1580O" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+              </svg>
+              Contratar
+            </a>
+            <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/bc3fa90444fa12b8f9d1100dc169a60a67f767c0" target="_blank">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Área de Membros
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2 class="section-title">Perguntas Frequentes</h2>
+      <div class="faq-item">
+        <div class="faq-question">Qual a diferença entre o plano Flow e o Scalping?</div>
+        <div class="faq-answer">O Flow se baseia em uma estratégia de fluxo conservadora ideal para quem busca estabilidade, enquanto o Scalping é mais agressivo e busca ganhos rápidos em curtos períodos de tempo. O Combo combina as duas abordagens.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">O que está incluído nos robôs bônus?</div>
+        <div class="faq-answer">Todos os planos incluem robôs de estratégias validadas no mercado limitados a 1 mini contrato, permitindo que você automatize suas operações com segurança e praticidade.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Como funciona o suporte?</div>
+        <div class="faq-answer">No plano Starter o suporte é básico e ocorre em horário comercial. Já nos demais planos o suporte é prioritário 24 horas por dia, 7 dias por semana, garantindo acompanhamento contínuo.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Posso fazer upgrade do meu plano?</div>
+        <div class="faq-answer">Sim. Você pode migrar para um plano superior a qualquer momento, bastando contratar o novo plano na seção de planos ou falar com nossa equipe pelo WhatsApp.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AlfaSharks. Todos os direitos reservados.</p>
+    <p>Este site é para fins educacionais e não constitui recomendação de investimento.</p>
+    <p>
+      <a href="https://wa.me/5551981624122?text=Quero%20falar%20com%20a%20AlfaSharks" target="_blank">Fale conosco</a>
+      |
+      <a href="#planos">Planos</a>
+    </p>
+  </footer>
+
+  <!-- Botão flutuante WhatsApp IA -->
+  <div class="whatsapp-float">
+    <a class="btn" href="https://wa.me/5551981624122?text=Quero%20falar%20com%20a%20IA%20da%20AlfaSharks" target="_blank">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Fale com nossa IA
+    </a>
+  </div>
+
+  <script>
+    // FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(function(question) {
+      question.addEventListener('click', function() {
+        var item = this.parentElement;
+        
+        // Fechar outros itens
+        document.querySelectorAll('.faq-item').forEach(function(otherItem) {
+          if (otherItem !== item) {
+            otherItem.classList.remove('open');
+          }
+        });
+        
+        // Toggle do item atual
+        item.classList.toggle('open');
+      });
+    });
+
+    // Animação de scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Efeito parallax no hero
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+      }
+    });
+
+    // Animação ao scroll para cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'cardGlow 2s ease-in-out';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.plan-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
