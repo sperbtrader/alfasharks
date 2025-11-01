@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<!--
-  Página de vendas para a linha de produtos AlfaSharks.
-  Versão Dark Neon com design futurista e interativo.
--->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AlfaSharks – Estratégias de Trading e Robôs Validados</title>
+  <title>AlfaSharks – Automação Inteligente para Trading</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
     
     :root {
       --bg-dark: #0a0e27;
       --bg-darker: #050816;
       --bg-card: #0f1629;
-      --neon-cyan: #00f0ff;
+      --neon-cyan: #00c2ff;
       --neon-blue: #0066ff;
-      --neon-purple: #9d00ff;
-      --neon-green: #00ff88;
-      --neon-pink: #ff0080;
+      --neon-purple: #7d3af2;
+      --neon-green: #00d47e;
+      --neon-red: #ff3366;
       --text-primary: #e0e6ff;
       --text-secondary: #8b93b8;
       --text-muted: #5a6280;
-      font-family: 'Rajdhani', sans-serif;
+      --accent-gold: #ffb347;
+      font-family: 'Inter', sans-serif;
     }
 
     * {
@@ -40,7 +37,7 @@
       position: relative;
     }
 
-    /* Background animado com partículas */
+    /* Background refinado */
     body::before {
       content: '';
       position: fixed;
@@ -49,19 +46,19 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(157, 0, 255, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(0, 194, 255, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(125, 58, 242, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.02) 0%, transparent 50%);
       z-index: 0;
-      animation: backgroundPulse 10s ease-in-out infinite;
+      animation: backgroundPulse 15s ease-in-out infinite;
     }
 
     @keyframes backgroundPulse {
       0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
+      50% { opacity: 0.8; }
     }
 
-    /* Grid de fundo */
+    /* Grid mais sutil */
     body::after {
       content: '';
       position: fixed;
@@ -70,16 +67,16 @@
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
+        linear-gradient(rgba(0, 194, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 194, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
       z-index: 0;
-      animation: gridMove 20s linear infinite;
+      animation: gridMove 30s linear infinite;
     }
 
     @keyframes gridMove {
       0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
+      100% { transform: translate(30px, 30px); }
     }
 
     a {
@@ -87,117 +84,53 @@
       text-decoration: none;
     }
 
-    /* Header futurista */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(10, 14, 39, 0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
-      animation: slideDown 0.6s ease-out;
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .nav-container {
+    /* Logo centralizada no topo com animação */
+    .top-logo {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
+      justify-content: center;
+      padding: 3rem 2rem 2rem;
       position: relative;
       z-index: 10;
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .logo-img {
+      height: 80px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(0, 194, 255, 0.4));
       transition: transform 0.3s ease;
+      animation: logoIntro 1.5s ease-out;
     }
 
-    .logo-container:hover {
+    @keyframes logoIntro {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .logo-img:hover {
       transform: scale(1.05);
     }
 
-    .logo-img {
-      height: 50px;
-      width: auto;
-      filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
-      animation: logoGlow 3s ease-in-out infinite;
-    }
-
-    @keyframes logoGlow {
-      0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5)); }
-      50% { filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.8)); }
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    nav li a {
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 1rem;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      position: relative;
-      padding: 0.5rem 0;
-    }
-
-    nav li a::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
-      box-shadow: 0 0 10px var(--neon-cyan);
-      transition: width 0.3s ease;
-    }
-
-    nav li a:hover::before {
-      width: 100%;
-    }
-
-    nav li a:hover {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 10px var(--neon-cyan);
-    }
-
-    /* Hero section neon */
+    /* Hero section com animação de candles */
     .hero {
       background: 
-        linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(5, 8, 22, 0.9) 100%),
-        url('hero.jpg');
+        linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(5, 8, 22, 0.9) 100%);
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
       color: var(--text-primary);
-      padding: 10rem 2rem 8rem;
+      padding: 0 2rem 6rem;
       text-align: center;
       position: relative;
       overflow: hidden;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero::before {
@@ -208,57 +141,104 @@
       right: 0;
       bottom: 0;
       background: 
-        radial-gradient(circle at 30% 40%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(157, 0, 255, 0.15) 0%, transparent 50%);
-      animation: heroPulse 8s ease-in-out infinite;
+        radial-gradient(circle at 30% 40%, rgba(0, 194, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(125, 58, 242, 0.08) 0%, transparent 50%);
+      animation: heroPulse 10s ease-in-out infinite;
     }
 
     @keyframes heroPulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.7; }
     }
 
-    /* Linhas animadas no hero */
-    .hero::after {
+    /* Animação de candles */
+    .candles-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 20px;
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .candle {
+      width: 12px;
+      background: linear-gradient(to top, var(--neon-green) 0%, transparent 100%);
+      border-radius: 2px;
+      position: relative;
+      animation: candleFloat 4s ease-in-out infinite;
+    }
+
+    .candle::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 200%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-      animation: scanLine 4s linear infinite;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--neon-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--neon-green);
     }
 
-    @keyframes scanLine {
-      0% { top: 0; }
-      100% { top: 100%; }
+    .candle.red {
+      background: linear-gradient(to top, var(--neon-red) 0%, transparent 100%);
     }
+
+    .candle.red::before {
+      background: var(--neon-red);
+      box-shadow: 0 0 10px var(--neon-red);
+    }
+
+    @keyframes candleFloat {
+      0%, 100% { 
+        transform: translateY(0);
+        height: 30px;
+      }
+      25% { 
+        transform: translateY(-5px);
+        height: 40px;
+      }
+      50% { 
+        transform: translateY(0);
+        height: 35px;
+      }
+      75% { 
+        transform: translateY(-3px);
+        height: 45px;
+      }
+    }
+
+    .candle:nth-child(2) { animation-delay: 0.2s; }
+    .candle:nth-child(3) { animation-delay: 0.4s; }
+    .candle:nth-child(4) { animation-delay: 0.6s; }
+    .candle:nth-child(5) { animation-delay: 0.8s; }
+    .candle:nth-child(6) { animation-delay: 1s; }
+    .candle:nth-child(7) { animation-delay: 1.2s; }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: 1000px;
       margin: 0 auto;
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3.5rem;
       margin-bottom: 1.5rem;
-      font-weight: 900;
-      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
       line-height: 1.1;
-      background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
-      animation: titleGlow 3s ease-in-out infinite, fadeInUp 0.8s ease-out;
-    }
-
-    @keyframes titleGlow {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.3); }
+      color: var(--text-primary);
+      text-shadow: 0 0 20px rgba(0, 194, 255, 0.2);
+      animation: fadeInUp 0.8s ease-out;
     }
 
     @keyframes fadeInUp {
@@ -273,11 +253,14 @@
     }
 
     .hero p {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 3rem;
       color: var(--text-secondary);
       font-weight: 400;
       line-height: 1.8;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
       animation: fadeInUp 0.8s ease-out 0.3s both;
     }
 
@@ -289,28 +272,24 @@
       animation: fadeInUp 0.8s ease-out 0.6s both;
     }
 
-    /* Botões neon */
+    /* Botões mais modernos */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
       padding: 1.2rem 2.5rem;
-      border-radius: 50px;
-      background: transparent;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 194, 255, 0.1) 0%, rgba(0, 102, 255, 0.1) 100%);
       color: var(--neon-cyan);
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1.1rem;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-family: 'Inter', sans-serif;
       transition: all 0.3s ease;
-      border: 2px solid var(--neon-cyan);
-      box-shadow: 
-        0 0 20px rgba(0, 240, 255, 0.3),
-        inset 0 0 20px rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 194, 255, 0.3);
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .btn::before {
@@ -320,7 +299,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0, 194, 255, 0.2), transparent);
       transition: left 0.5s ease;
     }
 
@@ -329,18 +308,46 @@
     }
 
     .btn:hover {
-      background: var(--neon-cyan);
-      color: var(--bg-darker);
+      background: linear-gradient(135deg, rgba(0, 194, 255, 0.2) 0%, rgba(0, 102, 255, 0.2) 100%);
       transform: translateY(-3px);
-      box-shadow: 
-        0 0 40px rgba(0, 240, 255, 0.6),
-        0 10px 30px rgba(0, 240, 255, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 194, 255, 0.3);
+      border-color: rgba(0, 194, 255, 0.5);
     }
 
     .btn svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       fill: currentColor;
+    }
+
+    /* Estilo específico para botões de compra */
+    .btn-buy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 1.2rem 1.5rem;
+      background: linear-gradient(135deg, rgba(0, 212, 126, 0.1) 0%, rgba(0, 194, 255, 0.1) 100%);
+      color: var(--neon-green);
+      border: 1px solid rgba(0, 212, 126, 0.3);
+    }
+
+    .btn-buy:hover {
+      background: linear-gradient(135deg, rgba(0, 212, 126, 0.2) 0%, rgba(0, 194, 255, 0.2) 100%);
+      box-shadow: 0 8px 25px rgba(0, 212, 126, 0.3);
+      border-color: rgba(0, 212, 126, 0.5);
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--neon-green);
+    }
+
+    .btn-buy-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     main {
@@ -354,14 +361,12 @@
     .section-title {
       text-align: center;
       margin-bottom: 4rem;
-      font-size: 3rem;
-      font-weight: 900;
-      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
       color: var(--text-primary);
       position: relative;
       padding-bottom: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
     }
 
     .section-title::before {
@@ -370,76 +375,34 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
+      width: 80px;
       height: 4px;
-      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
-      box-shadow: 0 0 20px var(--neon-cyan);
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
       border-radius: 2px;
     }
 
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
-      box-shadow: 0 0 20px var(--neon-purple);
-      border-radius: 2px;
-    }
-
-    /* Cards neon futuristas */
+    /* Cards mais profissionais */
     .plans {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       margin-bottom: 3rem;
     }
 
     .plan-card {
-      background: rgba(15, 22, 41, 0.6);
+      background: rgba(15, 22, 41, 0.7);
       backdrop-filter: blur(10px);
-      border-radius: 20px;
-      border: 2px solid rgba(0, 240, 255, 0.2);
-      box-shadow: 
-        0 0 30px rgba(0, 240, 255, 0.1),
-        inset 0 0 30px rgba(0, 240, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 194, 255, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       padding: 2.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
       animation: fadeInUp 0.6s ease-out both;
-    }
-
-    .plan-card::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
-      border-radius: 20px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: -1;
-    }
-
-    .plan-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--bg-card);
-      border-radius: 18px;
-      z-index: -1;
     }
 
     .plan-card:nth-child(1) { animation-delay: 0.1s; }
@@ -448,79 +411,46 @@
     .plan-card:nth-child(4) { animation-delay: 0.4s; }
 
     .plan-card:hover {
-      transform: translateY(-15px) scale(1.03);
+      transform: translateY(-10px);
       border-color: var(--neon-cyan);
-      box-shadow: 
-        0 0 50px rgba(0, 240, 255, 0.4),
-        0 20px 60px rgba(0, 240, 255, 0.2);
+      box-shadow: 0 15px 40px rgba(0, 194, 255, 0.2);
     }
 
-    .plan-card:hover::before {
-      opacity: 1;
-    }
-
-    /* Ícone animado do card */
     .plan-icon {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       margin: 0 auto 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: rgba(0, 240, 255, 0.1);
-      border: 2px solid var(--neon-cyan);
-      box-shadow: 
-        0 0 30px rgba(0, 240, 255, 0.3),
-        inset 0 0 20px rgba(0, 240, 255, 0.1);
-      animation: iconFloat 3s ease-in-out infinite;
+      background: rgba(0, 194, 255, 0.1);
+      border: 1px solid var(--neon-cyan);
+      animation: iconFloat 4s ease-in-out infinite;
     }
 
     @keyframes iconFloat {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-5px); }
     }
 
     .plan-icon svg {
-      width: 45px;
-      height: 45px;
+      width: 35px;
+      height: 35px;
       fill: var(--neon-cyan);
-      filter: drop-shadow(0 0 10px var(--neon-cyan));
-      animation: iconPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes iconPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    .plan-card:hover .plan-icon {
-      border-color: var(--neon-blue);
-      box-shadow: 
-        0 0 50px rgba(0, 240, 255, 0.6),
-        inset 0 0 30px rgba(0, 240, 255, 0.2);
-      animation: iconSpin 1s ease-in-out;
-    }
-
-    @keyframes iconSpin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
 
     .plan-card h3 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       margin-bottom: 0.8rem;
       color: var(--neon-cyan);
-      font-weight: 800;
-      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
       text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
     }
 
     .plan-card p.tagline {
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-bottom: 2rem;
       color: var(--text-secondary);
       font-weight: 500;
@@ -535,42 +465,23 @@
 
     .plan-card ul li {
       margin-bottom: 1rem;
-      padding-left: 2.5rem;
+      padding-left: 2rem;
       position: relative;
       color: var(--text-primary);
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: all 0.3s ease;
     }
 
     .plan-card ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      background: transparent;
-      border: 2px solid var(--neon-cyan);
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-    }
-
-    .plan-card ul li::after {
       content: '✓';
       position: absolute;
-      left: 5px;
-      top: 50%;
-      transform: translateY(-50%);
+      left: 0;
       color: var(--neon-cyan);
       font-weight: bold;
-      font-size: 14px;
-      text-shadow: 0 0 10px var(--neon-cyan);
     }
 
     .plan-card:hover ul li {
-      transform: translateX(8px);
-      color: var(--neon-cyan);
+      transform: translateX(5px);
     }
 
     .btn-group {
@@ -580,35 +491,28 @@
     }
 
     .btn-secondary {
-      background: transparent;
       color: var(--neon-blue);
       border-color: var(--neon-blue);
-      box-shadow: 
-        0 0 20px rgba(0, 102, 255, 0.3),
-        inset 0 0 20px rgba(0, 102, 255, 0.1);
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(125, 58, 242, 0.1) 100%);
     }
 
     .btn-secondary:hover {
-      background: var(--neon-blue);
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(125, 58, 242, 0.2) 100%);
       color: var(--bg-darker);
-      box-shadow: 
-        0 0 40px rgba(0, 102, 255, 0.6),
-        0 10px 30px rgba(0, 102, 255, 0.3);
     }
 
-    /* FAQ neon */
+    /* FAQ mais limpo */
     .faq {
       margin-bottom: 3rem;
     }
 
     .faq-item {
       margin-bottom: 1.5rem;
-      background: rgba(15, 22, 41, 0.6);
+      background: rgba(15, 22, 41, 0.7);
       backdrop-filter: blur(10px);
-      border-radius: 15px;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 194, 255, 0.15);
       transition: all 0.3s ease;
       animation: fadeInUp 0.6s ease-out both;
     }
@@ -620,11 +524,10 @@
 
     .faq-item:hover {
       border-color: var(--neon-cyan);
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
     }
 
     .faq-question {
-      font-weight: 700;
+      font-weight: 600;
       padding: 1.5rem 2rem;
       cursor: pointer;
       position: relative;
@@ -633,24 +536,17 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1.1rem;
     }
 
     .faq-question::before {
       content: '';
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background: var(--neon-cyan);
       border-radius: 50%;
       flex-shrink: 0;
-      box-shadow: 0 0 10px var(--neon-cyan);
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes dotPulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.3); opacity: 0.7; }
     }
 
     .faq-question::after {
@@ -659,16 +555,15 @@
       right: 2rem;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: var(--neon-cyan);
       transition: transform 0.3s ease;
       font-weight: 300;
-      text-shadow: 0 0 10px var(--neon-cyan);
     }
 
     .faq-item.open .faq-question {
       color: var(--neon-cyan);
-      background: rgba(0, 240, 255, 0.05);
+      background: rgba(0, 194, 255, 0.05);
     }
 
     .faq-item.open .faq-question::after {
@@ -689,7 +584,7 @@
       padding: 0 2rem 1.5rem 3rem;
     }
 
-    /* Footer neon */
+    /* Footer mais clean */
     footer {
       background: rgba(5, 8, 22, 0.95);
       backdrop-filter: blur(20px);
@@ -697,8 +592,7 @@
       padding: 3rem 2rem;
       text-align: center;
       position: relative;
-      border-top: 1px solid rgba(0, 240, 255, 0.2);
-      box-shadow: 0 -10px 50px rgba(0, 240, 255, 0.1);
+      border-top: 1px solid rgba(0, 194, 255, 0.15);
     }
 
     footer::before {
@@ -709,8 +603,8 @@
       right: 0;
       bottom: 0;
       background: 
-        radial-gradient(circle at 30% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 70% 50%, rgba(157, 0, 255, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 30% 50%, rgba(0, 194, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(125, 58, 242, 0.03) 0%, transparent 50%);
     }
 
     footer p {
@@ -725,15 +619,13 @@
       margin: 0 0.5rem;
       transition: all 0.3s ease;
       font-weight: 600;
-      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
     }
 
     footer a:hover {
       color: var(--neon-blue);
-      text-shadow: 0 0 20px var(--neon-cyan);
     }
 
-    /* Botão flutuante WhatsApp neon */
+    /* Botão WhatsApp refinado */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -744,98 +636,148 @@
 
     @keyframes floatBounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-10px); }
     }
 
     .whatsapp-float .btn {
-      padding: 1.3rem 2rem;
-      border-radius: 50px;
-      background: transparent;
+      padding: 1.2rem 2rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(0, 212, 126, 0.1) 0%, rgba(0, 194, 255, 0.1) 100%);
       color: var(--neon-green);
       border-color: var(--neon-green);
-      box-shadow: 
-        0 0 30px rgba(0, 255, 136, 0.4),
-        inset 0 0 20px rgba(0, 255, 136, 0.1);
       font-size: 1rem;
-      font-weight: 800;
+      font-weight: 600;
     }
 
     .whatsapp-float .btn:hover {
-      background: var(--neon-green);
+      background: linear-gradient(135deg, rgba(0, 212, 126, 0.2) 0%, rgba(0, 194, 255, 0.2) 100%);
       color: var(--bg-darker);
-      box-shadow: 
-        0 0 50px rgba(0, 255, 136, 0.7),
-        0 15px 40px rgba(0, 255, 136, 0.4);
-      animation: none;
+      box-shadow: 0 10px 25px rgba(0, 212, 126, 0.3);
     }
 
-    /* Responsive */
+    /* Responsive aprimorado */
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
+      .top-logo {
+        padding: 2rem 1rem 1rem;
       }
+      
+      .logo-img {
+        height: 60px;
+      }
+      
+      .hero {
+        padding: 0 1rem 4rem;
+        min-height: 60vh;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
       .hero p {
         font-size: 1.1rem;
       }
-      nav ul {
-        gap: 1rem;
-        font-size: 0.8rem;
-      }
+      
       .section-title {
         font-size: 2rem;
       }
+      
       .plans {
         grid-template-columns: 1fr;
       }
-      .nav-container {
-        padding: 1rem;
-      }
-      .logo-img {
-        height: 40px;
-      }
+      
       .whatsapp-float {
         bottom: 20px;
         right: 20px;
       }
+      
       .whatsapp-float .btn {
         padding: 1rem 1.5rem;
         font-size: 0.9rem;
       }
+      
+      .plan-card {
+        padding: 2rem;
+      }
+      
+      .candles-container {
+        height: 30%;
+        gap: 5px;
+      }
+      
+      .candle {
+        width: 8px;
+      }
     }
 
-    /* Efeito de brilho nos cards ao scroll */
-    @keyframes cardGlow {
-      0% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.1); }
-      50% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.3); }
-      100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.1); }
+    @media (max-width: 480px) {
+      .top-logo {
+        padding: 1.5rem 1rem 1rem;
+      }
+      
+      .logo-img {
+        height: 50px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 1rem 1.8rem;
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .faq-question {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+      }
+      
+      .faq-item.open .faq-answer {
+        padding: 0 1.5rem 1.2rem 2.5rem;
+      }
+      
+      .candles-container {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-container">
-      <div class="logo-container">
-        <img src="alfasharks_logo.png" alt="AlfaSharks Bots" class="logo-img">
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#planos">Planos</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Logo centralizada no topo -->
+  <div class="top-logo">
+    <img src="alfasharks_logo.png" alt="AlfaSharks Bots" class="logo-img">
+  </div>
 
   <section class="hero">
+    <!-- Animação de candles -->
+    <div class="candles-container">
+      <div class="candle"></div>
+      <div class="candle red"></div>
+      <div class="candle"></div>
+      <div class="candle red"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle red"></div>
+    </div>
+    
     <div class="hero-content">
-      <h1>Automatize e aprimore seu trading</h1>
-      <p>Descubra estratégias validadas no mercado, robôs exclusivos e planos flexíveis que se adaptam ao seu perfil de investidor. Torne‑se parte da comunidade AlfaSharks e evolua com suporte dedicado e tecnologia de ponta.</p>
+      <h1>Automatização Inteligente para Trading</h1>
+      <p>Algoritmos avançados e estratégias validadas para traders que buscam eficiência e resultados consistentes. Tecnologia de ponta com suporte especializado.</p>
       <div class="hero-buttons">
         <a class="btn" href="#planos">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
           </svg>
-          Ver Planos
+          Conhecer Planos
         </a>
       </div>
     </div>
@@ -843,7 +785,7 @@
 
   <main>
     <section id="planos">
-      <h2 class="section-title">Escolha o plano ideal</h2>
+      <h2 class="section-title">Nossas Soluções</h2>
       <div class="plans">
         <!-- Starter Plan -->
         <div class="plan-card">
@@ -854,19 +796,22 @@
             </svg>
           </div>
           <h3>Flow Starter</h3>
-          <p class="tagline">Estratégia conservadora, ideal para começar</p>
+          <p class="tagline">Ideal para iniciar na automação</p>
           <ul>
             <li>Limite de 1 mini contrato</li>
             <li>Estratégia de fluxo conservadora</li>
             <li>Suporte básico em horário comercial</li>
-            <li>Bônus: robôs padrão validados</li>
+            <li>Robôs validados incluídos</li>
           </ul>
           <div class="btn-group">
-            <a class="btn" href="https://chk.eduzz.com/KW8KNZ7201" target="_blank">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-              </svg>
-              Contratar
+            <a class="btn btn-buy" href="https://chk.eduzz.com/KW8KNZ7201" target="_blank">
+              <div class="btn-buy-content">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
+                </svg>
+                Contratar
+              </div>
+              <span class="price">R$ 297</span>
             </a>
             <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/6b6c993cefd04d3911f8bba25430d43ef803aaa3" target="_blank">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -885,19 +830,22 @@
             </svg>
           </div>
           <h3>Flow Ilimitado</h3>
-          <p class="tagline">Fluxo sem limites para quem quer escalar</p>
+          <p class="tagline">Para traders que buscam escalabilidade</p>
           <ul>
             <li>Sem limite de mini contratos</li>
             <li>Estratégia de fluxo conservadora</li>
             <li>Suporte prioritário 24/7</li>
-            <li>Bônus: robôs padrão validados</li>
+            <li>Robôs validados incluídos</li>
           </ul>
           <div class="btn-group">
-            <a class="btn" href="https://chk.eduzz.com/69KAP1K80O" target="_blank">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-              </svg>
-              Contratar
+            <a class="btn btn-buy" href="https://chk.eduzz.com/69KAP1K80O" target="_blank">
+              <div class="btn-buy-content">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
+                </svg>
+                Contratar
+              </div>
+              <span class="price">R$ 497</span>
             </a>
             <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/6b6c993cefd04d3911f8bba25430d43ef803aaa3" target="_blank">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -916,19 +864,22 @@
             </svg>
           </div>
           <h3>Scalping</h3>
-          <p class="tagline">Alta velocidade para traders agressivos</p>
+          <p class="tagline">Para operações de alta frequência</p>
           <ul>
             <li>Sem limite de mini contratos</li>
-            <li>Estratégia de scalping agressiva</li>
+            <li>Estratégia de scalping avançada</li>
             <li>Suporte prioritário 24/7</li>
-            <li>Bônus: robôs padrão validados</li>
+            <li>Robôs validados incluídos</li>
           </ul>
           <div class="btn-group">
-            <a class="btn" href="https://chk.eduzz.com/G9612ROYW1" target="_blank">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-              </svg>
-              Contratar
+            <a class="btn btn-buy" href="https://chk.eduzz.com/G9612ROYW1" target="_blank">
+              <div class="btn-buy-content">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
+                </svg>
+                Contratar
+              </div>
+              <span class="price">R$ 497</span>
             </a>
             <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/9d6c9c644b0bbd12dbf9cebb067be9ea5bf81abe" target="_blank">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -946,20 +897,23 @@
               <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/>
             </svg>
           </div>
-          <h3>Combo Flow + Scalping</h3>
-          <p class="tagline">Duas estratégias em um pacote econômico</p>
+          <h3>Combo Completo</h3>
+          <p class="tagline">Solução completa com economia</p>
           <ul>
             <li>Inclui Flow Ilimitado e Scalping</li>
             <li>Economia na contratação</li>
             <li>Suporte prioritário 24/7</li>
-            <li>Bônus: robôs padrão validados</li>
+            <li>Robôs validados incluídos</li>
           </ul>
           <div class="btn-group">
-            <a class="btn" href="https://chk.eduzz.com/69KAP1580O" target="_blank">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-              </svg>
-              Contratar
+            <a class="btn btn-buy" href="https://chk.eduzz.com/69KAP1580O" target="_blank">
+              <div class="btn-buy-content">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z"/>
+                </svg>
+                Contratar
+              </div>
+              <span class="price">R$ 797</span>
             </a>
             <a class="btn btn-secondary" href="https://cursos.nutror.com/curso/bc3fa90444fa12b8f9d1100dc169a60a67f767c0" target="_blank">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -976,19 +930,19 @@
       <h2 class="section-title">Perguntas Frequentes</h2>
       <div class="faq-item">
         <div class="faq-question">Qual a diferença entre o plano Flow e o Scalping?</div>
-        <div class="faq-answer">O Flow se baseia em uma estratégia de fluxo conservadora ideal para quem busca estabilidade, enquanto o Scalping é mais agressivo e busca ganhos rápidos em curtos períodos de tempo. O Combo combina as duas abordagens.</div>
+        <div class="faq-answer">O Flow utiliza uma estratégia de fluxo mais conservadora, ideal para quem busca estabilidade. Já o Scalping é voltado para operações de alta frequência, com entrada e saída rápidas do mercado. O Combo oferece ambas as abordagens.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question">O que está incluído nos robôs bônus?</div>
-        <div class="faq-answer">Todos os planos incluem robôs de estratégias validadas no mercado limitados a 1 mini contrato, permitindo que você automatize suas operações com segurança e praticidade.</div>
+        <div class="faq-answer">Todos os planos incluem robôs de estratégias validadas no mercado, limitados a 1 mini contrato. Estes robôs permitem automatizar operações com segurança e eficiência.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question">Como funciona o suporte?</div>
-        <div class="faq-answer">No plano Starter o suporte é básico e ocorre em horário comercial. Já nos demais planos o suporte é prioritário 24 horas por dia, 7 dias por semana, garantindo acompanhamento contínuo.</div>
+        <div class="faq-answer">No plano Starter o suporte é básico e ocorre em horário comercial. Nos demais planos o suporte é prioritário 24/7, com acompanhamento contínuo da nossa equipe especializada.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question">Posso fazer upgrade do meu plano?</div>
-        <div class="faq-answer">Sim. Você pode migrar para um plano superior a qualquer momento, bastando contratar o novo plano na seção de planos ou falar com nossa equipe pelo WhatsApp.</div>
+        <div class="faq-answer">Sim. Você pode migrar para um plano superior a qualquer momento, seja contratando diretamente na seção de planos ou entrando em contato com nossa equipe de suporte.</div>
       </div>
     </section>
   </main>
@@ -1003,7 +957,7 @@
     </p>
   </footer>
 
-  <!-- Botão flutuante WhatsApp IA -->
+  <!-- Botão flutuante WhatsApp -->
   <div class="whatsapp-float">
     <a class="btn" href="https://wa.me/5551981624122?text=Quero%20falar%20com%20a%20IA%20da%20AlfaSharks" target="_blank">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1043,33 +997,6 @@
           });
         }
       });
-    });
-
-    // Efeito parallax no hero
-    window.addEventListener('scroll', function() {
-      const scrolled = window.pageYOffset;
-      const hero = document.querySelector('.hero');
-      if (hero) {
-        hero.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
-      }
-    });
-
-    // Animação ao scroll para cards
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'cardGlow 2s ease-in-out';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.plan-card').forEach(el => {
-      observer.observe(el);
     });
   </script>
 </body>
